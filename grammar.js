@@ -402,7 +402,7 @@ module.exports = grammar({
       return choice(...table.map(([operator, prec]) => prec.ASSOC(prec.RANK, seq(
         field("lhs", $._expression), 
         field("operator", operator), 
-        repeat($._newline), 
+        repeat(choice($._newline, /[ \t]/)), 
         field("rhs", $._expression)
       ))))
     },
